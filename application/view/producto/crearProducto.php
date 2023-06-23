@@ -95,7 +95,7 @@
                                     <div class="form-group row">
                                         <label class="col-form-label col-md-3 col-sm-3 text-center">Serie</label>
                                         <div class="col-md-9 col-sm-9 ">
-                                            <input type="email" class="form-control" placeholder="Escribir Serie" name="txtSerie">
+                                            <input type="text" class="form-control" placeholder="Escribir Serie" name="txtSerie">
                                         </div>
                                     </div>
 

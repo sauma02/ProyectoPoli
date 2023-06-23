@@ -87,7 +87,7 @@
         <div class="modal-content">
             <form action="" method="POST" class="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar Cliente</h4>
+                    <h4 class="modal-title">Editar Producto</h4>
                 </div>
 
                 <div class="modal-body">
@@ -97,67 +97,73 @@
 									<br />
 									<form class="form-label-left input_mask" method="post">
                                         <input type="text" id="txtIdCliente" name="txtIdUsuario" hidden>
-										<div class="col-md-6 col-sm-6  form-group has-feedback">
-											<select name="selTiposDocumentos" id="selTiposDocumentos" class="form-control">
-												<option selected="selected">Tipo Documento</option>
-												<?php foreach($tiposDocumentos as $value):?>
-													<option value="<?php echo $value['idTipoDocumento'];?>"><?php echo $value['doc'];?></option>
+										<div class="col-md-6 col-sm-6  form-group has-feedback ">
+											<select name="selMarca" id="selMarca" class="form-control has-feedback-left">
+												<option selected="selected">Marca</option>
+												<?php foreach($listarMarca as $value):?>
+													<option value="<?php echo $value['idMarca'];?>"><?php echo $value['Nombres'];?></option>
 												<?php endforeach; ?>
 											</select>
+                                            <span class="fa fa-tag form-control-feedback left" aria-hidden="true"></span>
 										</div>
                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
-											<input type="text" class="form-control has-feedback-left" id="txtDocumento" placeholder="Documento" name="txtDocumento">
+											<input type="text" class="form-control has-feedback-left" id="txtNombreProducto" placeholder="Nombre Producto" name="txtNombreProducto">
 											<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 										</div>	
                                         <div class="col-md-6 col-sm-6  form-group has-feedback">
-											<select name="selTipoCliente" id="selTipoCliente" class="form-control">
-												<option selected="selected">Tipo Ciente</option>
-												<?php foreach($tipoCliente as $value):?>
-													<option value="<?php echo $value['idTipoCliente'];?>"><?php echo $value['tipoC'];?></option>
+											<select name="selCategoria" id="selCategoria" class="form-control has-feedback-left">
+												<option selected="selected">Categoria</option>
+												<?php foreach($listarCategoria as $value):?>
+													<option value="<?php echo $value['idCategoria'];?>"><?php echo $value['Nombre'];?></option>
 												<?php endforeach; ?>
 											</select>
+                                            <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
 										</div>
 
 														
 									
 										<div class="col-md-6 col-sm-6  form-group has-feedback">
-											<input type="text" class="form-control has-feedback-left" id="txtNombres" placeholder="Nombres" name="txtNombres">
+											<input type="text" class="form-control has-feedback-left" id="txtPrecio" placeholder="Precio" name="txtPrecio">
 											<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 										</div>
 
 										<div class="col-md-6 col-sm-6  form-group has-feedback">
-											<input type="text" class="form-control" id="txtApellidos" placeholder="Apellidos" name="txtApellidos">
-											<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-										</div>
+                                        <input type="tel" class="form-control has-feedback-left" id="inputSuccess5" placeholder="Cantidad" name="txtCantidad">
+                                        <span class="fa fa-cubes form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
 
-										<div class="col-md-6 col-sm-6  form-group has-feedback">
-											<input type="email" class="form-control has-feedback-left" id="txtEmail" placeholder="Email" name="txtEmail">
-											<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-										</div>
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 text-center">Serie</label>
+                                        <div class="col-md-9 col-sm-9 ">
+                                            <input type="text" class="form-control" placeholder="Escribir Serie" name="txtSerie">
+                                        </div>
+                                    </div>
 
-										<div class="col-md-6 col-sm-6  form-group has-feedback">
-											<input type="tel" class="form-control" id="txtTelefono" placeholder="Telefono" name="txtTelefono">
-											<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-										</div>
+                                        <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                        <input type="tel" class="form-control has-feedback-left" id="inputSuccess5" placeholder="Garantia" name="txtGarantia">
+                                        <span class="fa fa-shield form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
 
-										<div class="form-group row">
-											<label class="col-form-label col-md-3 col-sm-3 ">Dirección</label>
+										
+                                    <div class="form-group row">
+											<label class="col-form-label col-md-3 col-sm-3 text-center">Fecha de Garantia</label>
 											<div class="col-md-9 col-sm-9 ">
-												<input type="text" class="form-control" placeholder="Dirección" name="txtDireccion" id="txtDireccion">
+												<input id="birthday" class="date-picker form-control" name="txtFechaG" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+												<script>
+													function timeFunctionLong(input) {
+														setTimeout(function() {
+															input.type = 'text';
+														}, 60000);
+													}
+												</script>
 											</div>
 										</div>
                                         <div class="form-group row">
-											<label class="col-form-label col-md-3 col-sm-3 ">Fecha de Nacimiento</label>
-											<div class="col-md-9 col-sm-9 ">
-												<input type="text" class="form-control" placeholder="Dirección" name="txtFechaNacimiento" id="txtFechaNacimiento">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-form-label col-md-3 col-sm-3 ">Usuario</label>
-											<div class="col-md-9 col-sm-9 ">
-												<input type="text" class="form-control" placeholder="Usuario" name="txtUsuario" id="txtUsuario">
-											</div>
-										</div>
+                                        <label class="col-form-label col-md-3 col-sm-3 text-center">Descripcion</label>
+                                        <div class="col-md-9 col-sm-9 ">
+                                            <input type="text" class="form-control" placeholder="Escribir Descripcion" name="txtDescripcion">
+                                        </div>
+                                    </div>
 										<!-- <div class="form-group row">
 											<label class="col-form-label col-md-3 col-sm-3 ">Rol</label>
 											<div class="col-md-9 col-sm-9 ">
@@ -169,15 +175,13 @@
 												</select>
 											</div>
 										</div> -->
-										<div class="ln_solid"></div>
-										<div class="form-group row">
-											<div class="col-md-9 col-sm-9  offset-md-3">
-
-												<a type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-
-												<button type="submit" class="btn btn-success" name="btnEditar">Actualizar</button>
-											</div>
-										</div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group row">
+                                            <div class="col-md-9 col-sm-9  offset-md-4">
+                                                <a type="button" class="btn btn-danger" href="<?php echo URL; ?>clienteController/listarProductos">Cancel</a>
+                                                <button type="submit" class="btn btn-success" name="btnEditar">Guardar</button>
+                                            </div>
+                                        </div>
 									</form>
 								</div>
                         </div>
@@ -190,7 +194,7 @@
 <script>
     function datoUsuario(id){
         $.ajax({
-            url: url+"usuarioController/datoUsuario",
+            url: url+"productoController/datoUsuario",
             type:"POST",
             dataType:"json",
             data:{'id':id}
@@ -230,11 +234,11 @@
                     if(result.isConfirmed){
                         $.ajax({
                             type: "POST",
-                            url: url + "usuarioController/cambiarEstado",
+                            url: url + "productoController/cambiarEstado",
                             data: {'id': id,}
                         }).done(function(respuesta){
                             if(respuesta == 1){
-                                window.location = url + "usuarioController/listarUsuarios";
+                                window.location = url + "productoController/listarProductos";
                                 window.reload();
                             }else{
                                 Swal.fire('Error al cambiar el estado', '','error');
