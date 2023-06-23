@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2023 a las 18:23:44
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Jun 24, 2023 at 12:44 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `framework2`
+-- Database: `framework`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE `categorias` (
-  `IdCategoria` int(11) NOT NULL,
+  `idCategoria` int(11) NOT NULL,
   `Nombre` varchar(100) DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categorias`
+--
+
+INSERT INTO `categorias` (`idCategoria`, `Nombre`, `Descripcion`) VALUES
+(1, 'Tennis', NULL),
+(2, 'Guayos', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -44,10 +52,10 @@ CREATE TABLE `clientes` (
   `tipoCliente` varchar(20) DEFAULT NULL,
   `Estado` tinyint(4) NOT NULL,
   `idPersona` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Dumping data for table `clientes`
 --
 
 INSERT INTO `clientes` (`idCliente`, `tipoCliente`, `Estado`, `idPersona`) VALUES
@@ -56,7 +64,7 @@ INSERT INTO `clientes` (`idCliente`, `tipoCliente`, `Estado`, `idPersona`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `informaciones`
+-- Table structure for table `informaciones`
 --
 
 CREATE TABLE `informaciones` (
@@ -64,35 +72,43 @@ CREATE TABLE `informaciones` (
   `Contenido` longtext DEFAULT NULL,
   `fechaAct` datetime DEFAULT NULL,
   `idPersona` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `marcas`
+-- Table structure for table `marcas`
 --
 
 CREATE TABLE `marcas` (
-  `idMarcas` int(11) NOT NULL,
+  `idMarca` int(11) NOT NULL,
   `Nombres` varchar(50) DEFAULT NULL,
   `Descripcion` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marcas`
+--
+
+INSERT INTO `marcas` (`idMarca`, `Nombres`, `Descripcion`) VALUES
+(1, 'Adidas', NULL),
+(2, 'Nike', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `paginas`
+-- Table structure for table `paginas`
 --
 
 CREATE TABLE `paginas` (
   `idPagina` int(11) NOT NULL,
   `Pagina` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `personas`
+-- Table structure for table `personas`
 --
 
 CREATE TABLE `personas` (
@@ -106,10 +122,10 @@ CREATE TABLE `personas` (
   `Genero` varchar(10) DEFAULT NULL,
   `Fecha_Nacimiento` date DEFAULT NULL,
   `idTipoDocumento` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `personas`
+-- Dumping data for table `personas`
 --
 
 INSERT INTO `personas` (`idPersona`, `Documento`, `Nombres`, `Apellidos`, `Email`, `Telefono`, `Direccion`, `Genero`, `Fecha_Nacimiento`, `idTipoDocumento`) VALUES
@@ -122,37 +138,44 @@ INSERT INTO `personas` (`idPersona`, `Documento`, `Nombres`, `Apellidos`, `Email
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
   `idProducto` int(11) NOT NULL,
-  `Nom_Producto` int(11) DEFAULT NULL,
+  `Nom_Producto` varchar(50) DEFAULT NULL,
   `Precio` int(11) DEFAULT NULL,
   `Estado` int(11) DEFAULT NULL,
   `Cantidad` int(11) DEFAULT NULL,
   `Garantia` varchar(50) DEFAULT NULL,
   `Fecha_Garantia` date DEFAULT NULL,
   `Descripcion` text DEFAULT NULL,
-  `IdMarca` int(11) DEFAULT NULL,
-  `IdCategoria` int(11) DEFAULT NULL,
+  `idMarca` int(11) DEFAULT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
   `Serie` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`idProducto`, `Nom_Producto`, `Precio`, `Estado`, `Cantidad`, `Garantia`, `Fecha_Garantia`, `Descripcion`, `idMarca`, `idCategoria`, `Serie`) VALUES
+(1, 'Zapato', 234242, 0, 34, '3', '2023-06-13', 'aa', 1, 1, 'AAAEE3');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `idRol` int(11) NOT NULL,
   `Descripcion` varchar(15) DEFAULT NULL,
   `Estado` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`idRol`, `Descripcion`, `Estado`) VALUES
@@ -161,16 +184,16 @@ INSERT INTO `roles` (`idRol`, `Descripcion`, `Estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipodocumentos`
+-- Table structure for table `tipodocumentos`
 --
 
 CREATE TABLE `tipodocumentos` (
   `idTipoDocumento` int(11) NOT NULL,
   `Descripcion` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `tipodocumentos`
+-- Dumping data for table `tipodocumentos`
 --
 
 INSERT INTO `tipodocumentos` (`idTipoDocumento`, `Descripcion`) VALUES
@@ -179,7 +202,7 @@ INSERT INTO `tipodocumentos` (`idTipoDocumento`, `Descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -190,10 +213,10 @@ CREATE TABLE `usuarios` (
   `idPersona` int(11) DEFAULT NULL,
   `idRol` int(11) DEFAULT NULL,
   `Estado` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `Usuario`, `Clave`, `Foto`, `idPersona`, `idRol`, `Estado`) VALUES
@@ -204,129 +227,129 @@ INSERT INTO `usuarios` (`idUsuario`, `Usuario`, `Clave`, `Foto`, `idPersona`, `i
 (15, 'hi', '1', NULL, 12, 1, 1);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`IdCategoria`);
+  ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indices de la tabla `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`idCliente`);
 
 --
--- Indices de la tabla `informaciones`
+-- Indexes for table `informaciones`
 --
 ALTER TABLE `informaciones`
   ADD PRIMARY KEY (`idInformacion`);
 
 --
--- Indices de la tabla `marcas`
+-- Indexes for table `marcas`
 --
 ALTER TABLE `marcas`
-  ADD PRIMARY KEY (`idMarcas`);
+  ADD PRIMARY KEY (`idMarca`);
 
 --
--- Indices de la tabla `paginas`
+-- Indexes for table `paginas`
 --
 ALTER TABLE `paginas`
   ADD PRIMARY KEY (`idPagina`);
 
 --
--- Indices de la tabla `personas`
+-- Indexes for table `personas`
 --
 ALTER TABLE `personas`
   ADD PRIMARY KEY (`idPersona`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`idProducto`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`idRol`);
 
 --
--- Indices de la tabla `tipodocumentos`
+-- Indexes for table `tipodocumentos`
 --
 ALTER TABLE `tipodocumentos`
   ADD PRIMARY KEY (`idTipoDocumento`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `IdCategoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `informaciones`
+-- AUTO_INCREMENT for table `informaciones`
 --
 ALTER TABLE `informaciones`
   MODIFY `idInformacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `marcas`
+-- AUTO_INCREMENT for table `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `idMarcas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `paginas`
+-- AUTO_INCREMENT for table `paginas`
 --
 ALTER TABLE `paginas`
   MODIFY `idPagina` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `personas`
+-- AUTO_INCREMENT for table `personas`
 --
 ALTER TABLE `personas`
   MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `tipodocumentos`
+-- AUTO_INCREMENT for table `tipodocumentos`
 --
 ALTER TABLE `tipodocumentos`
   MODIFY `idTipoDocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
